@@ -1,24 +1,28 @@
-basePath: /
-host: api.kuiper.so
-swagger: '2.0'
+openapi: 3.0.0
+
 info:
-  title: Account KPI Service API
   version: 1.0.0
-schemes:
-  - https
-consumes:
-  - application/json
-produces:
-  - application/json
+  title: Account KPI Service API
+  description: 'API for retrieving account KPI data.'
+
+servers:
+  - url: https://api.kuiper.so/
+    description: Account KPI Service API
+
 paths:
   /account-kpi:
     get:
-      summary: Retrieve account KPI data
+      tags:
+        - Account KPI
       description: Retrieves KPI data for a specific account based on various filter criteria.
+      summary: Retrieve account KPI data
+      operationId: getAccountKPI
       parameters:
         - name: account_id
           in: query
-          type: string
+          required: true
+          schema:
+            type: string
           description: Unique identifier for the account
         - name: kpi
           in: query
@@ -49,22 +53,25 @@ paths:
           type: boolean
           description: Flag to combine data for the same dates
       responses:
-        200:
-          description: Successful response
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/AccountKPIData'
-      tags:
-        - Account KPI
+        '200':
+          description: Successfully returned account KPI data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountKPIData'
   /related-kpi:
     get:
-      summary: Retrieve related KPI data
+      tags:
+        - Related KPI
       description: Retrieves related KPI data for a specific account, filtering based on input criteria.
+      summary: Retrieve related KPI data
+      operationId: getRelatedKPI
       parameters:
         - name: account_id
           in: query
-          type: string
+          required: true
+          schema:
+            type: string
           description: Unique identifier for the account
         - name: kpi
           in: query
@@ -91,11 +98,19 @@ paths:
           type: string
           description: End date for filtering the data
       responses:
-        200:
-          description: Successful response
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/RelatedKPIData'
-      tags:
-        - Related KPI
+        '200':
+          description: Successfully returned related KPI data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelatedKPIData'
+
+components:
+  schemas:
+    AccountKPIData:
+      type: object
+      properties: // Define your properties for AccountKPIData here
+    RelatedKPIData:
+      type: object
+      properties: // Define your properties for RelatedKPIData here
+
