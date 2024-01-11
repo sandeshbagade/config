@@ -6,7 +6,7 @@ info:
   description: 'API for retrieving account KPI data.'
 
 servers:
-  - url: https://api.kuiper.so/
+  - url: https://api.kuiper.so
     description: Account KPI Service API
 
 paths:
