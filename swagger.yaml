@@ -99,10 +99,3 @@ paths:
               $ref: '#/definitions/RelatedKPIData'
       tags:
         - Related KPI
-definitions:
-  AccountKPIData:
-    type: object
-    properties: // Define your properties for AccountKPIData here
-  RelatedKPIData:
-    type: object
-    properties: // Define your properties for RelatedKPIData here
