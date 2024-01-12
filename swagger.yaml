@@ -10,7 +10,7 @@ servers:
     description: Account KPI Service API
 
 paths:
-  /account-kpi:
+  /account_kpi:
     get:
       tags:
         - Account KPI
@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountKPIData'
-  /related-kpi:
+  /related_kpi:
     get:
       tags:
         - Related KPI
